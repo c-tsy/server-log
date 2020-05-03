@@ -100,6 +100,7 @@ namespace TSYLog {
                 this.rand = ctx.auth.rand;
             }
             this.method = ctx.method;
+            this.from = ctx.get('X-Real-IP') || ctx.get('X-Forwarded-For')
             if (ctx.route) {
                 this.module = ctx.route
             }
