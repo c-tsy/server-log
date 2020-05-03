@@ -1,0 +1,19 @@
+{
+  "name": "@ctsy/server-log",
+  "version": "1.0.1",
+  "description": "服务端请求日志",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.ts",
+    "README.md"
+  ],
+  "repository": "https://github.com/c-tsy/server-log",
+  "author": "castleiMac <castle@tansuyun.cn>",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "*"
+  }
+}
