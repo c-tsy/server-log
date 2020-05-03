@@ -134,7 +134,7 @@ namespace TSYLog {
             let log = new ReqLog(ctx);
             log.etime = Date.now();
             log.time = log.etime - log.ctime;
-            if (err || ctx.status >= 400) {
+            if (err || ctx.status >= 400 || ctx.query.debug == 'true') {
                 log.req = ctx.request.body || {};
                 log.err = err;
                 log.rep = ctx.rbody || ctx.body;
@@ -147,7 +147,7 @@ namespace TSYLog {
      * @param driver 
      * @param conf 
      */
-    export function use(driver: string | { put: (data: any) => void } = '', conf: { [index: string]: any } = {}): Function {
+    export function use(driver: string | { put: (data: any) => void } = '', conf: { [index: string]: any } = {}): any {
         if (driver) {
             if ('string' == typeof driver) {
                 sls = require(driver).default(conf);
