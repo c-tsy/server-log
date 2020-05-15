@@ -1,5 +1,83 @@
 import * as qs from 'querystring'
 namespace TSYLog {
+
+    export class ClassEventLog {
+        /**
+         * 模块
+         */
+        Module: string = ""
+        /**
+         * 谁
+         */
+        Name: string = ""
+        /**
+         * 用户编号
+         */
+        UID: string = "";
+        /**
+         * 地点
+         */
+        Addr: string = "";
+        /**
+         * GPS坐标存储
+         */
+        GPS: string = ""
+        /**
+         * IP地址
+         */
+        IP: string = "";
+        /**
+         * 设备
+         */
+        Device: string = "";
+        /**
+         * 干什么
+         */
+        What: string = "";
+        /**
+         * 什么时间
+         */
+        When: string = "";
+        /**
+         * 
+         */
+        Key: string = "";
+        /**
+         * 分组号
+         */
+        GID: number = 0;
+    }
+
+    export class EventLogDriver {
+
+    }
+    export class EventLog {
+
+        log: EventLogDriver;
+
+        constructor(driver: string = '', conf: any = {}) {
+            if (driver) {
+                if ('string' == typeof driver) {
+                    this.log = require(driver).default(conf);
+                } else {
+                    console.log('use default log for console.log')
+                }
+            }
+        }
+
+        write(data: ClassEventLog[]) {
+
+        }
+
+        read() {
+
+        }
+
+        query(sql: string) {
+
+        }
+
+    }
     /**
      * 日志对象
      */
