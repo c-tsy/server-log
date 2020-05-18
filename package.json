@@ -1,6 +1,6 @@
 {
   "name": "@ctsy/server-log",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "服务端请求日志",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,6 +9,9 @@
     "dist/**/*.ts",
     "README.md"
   ],
+  "scripts": {
+    "prepublish": "rm -rf dist && tsc"
+  },
   "repository": "https://github.com/c-tsy/server-log",
   "author": "castleiMac <castle@tansuyun.cn>",
   "license": "MIT",
