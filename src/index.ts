@@ -177,8 +177,15 @@ namespace TSYLog {
                 this.key = ctx.auth.key;
                 this.rand = ctx.auth.rand;
             }
+
             this.method = ctx.method;
-            this.from = ctx.get('X-Real-IP') || ctx.get('X-Forwarded-For')
+            this.from = ctx.get('X-Real-IP') ||
+                ctx.get('X-Forwarded-For') ||
+                ctx.req.headers['x-forwarded-for'] ||
+                ctx.req.connection.remoteAddress || // 判断 connection 的远程 IP
+                ctx.req.socket.remoteAddress || // 判断后端的 socket 的 IP
+                ctx.req.connection.socket.remoteAddress;
+
             if (ctx.route) {
                 this.module = ctx.route
             }
