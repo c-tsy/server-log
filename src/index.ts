@@ -34,7 +34,7 @@ namespace TSYLog {
         /**
          * 用户编号
          */
-        UID: string = "";
+        UID: number = 0;
         /**
          * 地点
          */
@@ -71,6 +71,23 @@ namespace TSYLog {
          * 分组号
          */
         GID: number = 0;
+        /**
+         * 时间
+         */
+        Time: number = Date.now() / 1000;
+        /**
+         * 数据,JSON格式
+         */
+        Data: any = "";
+        /**
+         * 结论
+         */
+        Result: any = "";
+        /**
+         * 操作结论
+         */
+        Code: number = 200;
+
         constructor(data?: ClassEventLog) {
             if (data) {
                 for (let x in data) {
@@ -81,6 +98,18 @@ namespace TSYLog {
     }
 
     export class EventLogDriver {
+
+        async write(data: ClassEventLog[]) {
+            throw new Error('未实现')
+        }
+
+        async read(data: SearchWhere): Promise<SearchResult<ClassEventLog>> {
+            throw new Error('未实现')
+        }
+
+        async query(sql: string): Promise<any> {
+            throw new Error('未实现')
+        }
 
     }
     export class EventLog {
@@ -98,15 +127,15 @@ namespace TSYLog {
         }
 
         async write(data: ClassEventLog[]) {
-            throw new Error('未实现')
+            return await this.log.write(data);
         }
 
         async read(data: SearchWhere): Promise<SearchResult<ClassEventLog>> {
-            throw new Error('未实现')
+            return await this.log.read(data);
         }
 
         async query(sql: string): Promise<any> {
-            throw new Error('未实现')
+            return await this.log.query(sql);
         }
 
     }
