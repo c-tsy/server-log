@@ -1,6 +1,27 @@
 import * as qs from 'querystring'
 namespace TSYLog {
 
+    /**
+ * 查询结果
+ */
+    export class SearchResult<T> {
+        L: T[] = [];
+        T: number = 0
+        P: number = 1
+        N: number = 10;
+        R: { [index: string]: any } = {}
+    }
+
+    /**
+     * 查询条件
+     */
+    export class SearchWhere {
+        W: { [index: string]: any } = {}
+        Keyword?: string = "";
+        P?: number = 1;
+        N?: number = 10;
+        Sort?: string = "";
+    }
     export class ClassEventLog {
         /**
          * 模块
@@ -39,13 +60,24 @@ namespace TSYLog {
          */
         When: string = "";
         /**
-         * 
+         * 分组键
          */
         Key: string = "";
+        /**
+         * 应用编号
+         */
+        AID: number = 0;
         /**
          * 分组号
          */
         GID: number = 0;
+        constructor(data?: ClassEventLog) {
+            if (data) {
+                for (let x in data) {
+                    this[x] = data[x];
+                }
+            }
+        }
     }
 
     export class EventLogDriver {
@@ -65,16 +97,16 @@ namespace TSYLog {
             }
         }
 
-        write(data: ClassEventLog[]) {
-
+        async write(data: ClassEventLog[]) {
+            throw new Error('未实现')
         }
 
-        read() {
-
+        async read(data: SearchWhere): Promise<SearchResult<ClassEventLog>> {
+            throw new Error('未实现')
         }
 
-        query(sql: string) {
-
+        async query(sql: string): Promise<any> {
+            throw new Error('未实现')
         }
 
     }
