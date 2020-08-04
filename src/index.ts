@@ -88,6 +88,8 @@ namespace TSYLog {
          */
         Code: number = 200;
 
+        Spend: number = 0;
+
         constructor(data?: ClassEventLog) {
             if (data) {
                 for (let x in data) {
